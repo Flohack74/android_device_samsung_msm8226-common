@@ -20,17 +20,13 @@
 <!-- These resources are around just to allow their values to be customized
      for different hardware and product builds. -->
 <resources>
-
-    <!-- Operating voltage for bluetooth controller. 0 by default-->
-    <integer translatable="false" name="config_bluetooth_operating_voltage_mv">3300</integer>
-
-    <!-- Values for GPS configuration -->
+    <!-- Values for GPS configuration (Reliance) -->
     <string-array translatable="false" name="config_gpsParameters">
-        <item>NTP_SERVER=north-america.pool.ntp.org</item>
+        <item>NTP_SERVER=asia.pool.ntp.org</item>
         <item>SUPL_ES=0</item>
         <item>SUPL_HOST=supl.google.com</item>
         <item>SUPL_PORT=7275</item>
         <item>SUPL_MODE=1</item>
-        <item>LPP_PROFILE=0</item>
+        <item>LPP_PROFILE=2</item>
     </string-array>
 </resources>
