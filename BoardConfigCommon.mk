@@ -30,6 +30,9 @@ TARGET_FS_CONFIG_GEN := device/samsung/msm8226-common/config.fs
 #ADB
 TARGET_USES_LEGACY_ADB_INTERFACE :=true
 
+# Binder API version
+TARGET_USES_64_BIT_BINDER := true
+
 #HIDL
 PRODUCT_COPY_FILES += \
     $(VENDOR_PATH)/manifest.xml:system/vendor/manifest.xml
