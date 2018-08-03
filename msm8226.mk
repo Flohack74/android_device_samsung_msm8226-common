@@ -57,10 +57,8 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-impl-legacy \
-    android.hardware.camera.provider@2.4-service \
+    android.hardware.camera.provider@2.4-impl \
     camera.device@1.0-impl \
-    libboringssl-compat \
     camera.msm8226 \
     libxml2 \
     Snap
@@ -80,6 +78,7 @@ PRODUCT_PACKAGES += \
     memtrack.msm8226 \
     android.hardware.graphics.allocator@2.0-impl \
     android.hardware.graphics.allocator@2.0-service \
+    android.hardware.graphics.composer@2.1-impl \
     android.hardware.graphics.mapper@2.0-impl \
     android.hardware.memtrack@1.0-impl
 
@@ -188,7 +187,7 @@ PRODUCT_PACKAGES += \
 
 # USB HAL
 PRODUCT_PACKAGES += \
-	android.hardware.usb@1.0-service
+	android.hardware.usb@1.0-service.basic
 
 # Power HAL
 PRODUCT_PACKAGES += \
