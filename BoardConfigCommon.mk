@@ -30,6 +30,11 @@ TARGET_FS_CONFIG_GEN := device/samsung/msm8226-common/config.fs
 #ADB
 TARGET_USES_LEGACY_ADB_INTERFACE :=true
 
+TARGET_PROCESS_SDK_VERSION_OVERRIDE += \
+    /system/bin/mediaserver=19 \
+    /system/vendor/bin/mm-qcamera-daemon=19 \
+    /system/vendor/bin/hw/rild=27
+
 # Binder API version
 TARGET_USES_64_BIT_BINDER := true
 
@@ -49,5 +54,4 @@ BOARD_HAVE_QCOM_FM := true
 TARGET_SYSTEM_PROP := $(VENDOR_PATH)/system.prop
 
 # SELinux
-include device/qcom/sepolicy/sepolicy.mk
-include device/qcom/sepolicy/legacy-sepolicy.mk
+include device/qcom/sepolicy-legacy/sepolicy.mk
