@@ -53,5 +53,6 @@ BOARD_HAVE_QCOM_FM := true
 
 # Properites
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk
