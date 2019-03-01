@@ -20,7 +20,7 @@ if [ -f "/system/etc/firmware/a300_pm4.fw" ]
 then
 	print_log 5 $LOG_TAG "Symlink have been created, skip..."
 else
-	ln -sf /vendor/etc/firmware/* /system/etc/firmware/
+	ln -sf /vendor/etc/firmware /system/etc/firmware
 	if [ $? -ne 0 ]
 	then
 		print_log 3 $LOG_TAG "Failed to create symlink to /system/etc!"
