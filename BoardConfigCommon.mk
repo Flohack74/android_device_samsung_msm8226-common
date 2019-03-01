@@ -34,9 +34,6 @@ TARGET_FS_CONFIG_GEN := device/samsung/msm8226-common/config.fs
 
 BOARD_USES_QCOM_HARDWARE := true
 
-#ADB
-TARGET_USES_LEGACY_ADB_INTERFACE :=true
-
 #HIDL
 DEVICE_MANIFEST_FILE := $(VENDOR_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(VENDOR_PATH)/compatibility_matrix.xml
