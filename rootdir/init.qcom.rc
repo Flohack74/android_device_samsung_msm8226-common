@@ -25,9 +25,9 @@
 # ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #
 
-import init.qcom.power.rc
-import init.qcom.usb.rc
-import init.target.rc
+import /vendor/etc/init/hw/init.qcom.power.rc
+import /vendor/etc/init/hw/init.qcom.usb.rc
+import /vendor/etc/init/hw/init.target.rc
 
 on early-init
 
@@ -53,7 +53,7 @@ on fs
     wait /dev/block/platform/soc.0/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc.0/${ro.boot.bootdevice} /dev/block/bootdevice
     
-    mount_all fstab.qcom
+    mount_all /vendor/etc/fstab.qcom
     start fwlink
 
     # Support Preload install apks
@@ -202,7 +202,6 @@ on post-fs-data
     chmod 0660 /efs/prov/libdevkm.lock
 
     # ICD
-    exec check_icd
     chown system system /dev/icd
     chmod 0644 /dev/icd
     chown system system /dev/icdr
@@ -236,8 +235,8 @@ on boot
     # Permissions for bluetooth
     mkdir /efs/bluetooth 0775 radio system
     setprop ro.bt.bdaddr_path "/efs/bluetooth/bt_addr"
-    chown bluetooth net_bt_stack ro.bt.bdaddr_path
-    chown radio net_bt_stack /efs/bluetooth/bt_addr
+    chown bluetooth radio ro.bt.bdaddr_path
+    chown radio bluetooth /efs/bluetooth/bt_addr
     chmod 0755 /efs/bluetooth/bt_addr
     #restorecon_recursive /efs/bluetooth
 
@@ -569,11 +568,6 @@ service adsprpcd /vendor/bin/adsprpcd
     user media
     group media
 
-service audiod /vendor/bin/audiod
-    class late_start
-    user system
-    group system
-
 service charger /sbin/healthd -c
     class charger
     critical
@@ -589,9 +583,9 @@ service ds_fmc_appd /vendor/bin/ds_fmc_appd -p "rmnet0" -D
 on property:persist.data.ds_fmc_app.mode=1
     start ds_fmc_appd
 
-service hciattach /system/bin/sh /init.qcom.bt.sh
+service hciattach /vendor/bin/init.qcom.bt.sh
     class late_start
-    user bluetooth root
+    user root
     group bluetooth net_bt_admin
     disabled
     oneshot
@@ -622,14 +616,14 @@ service qcamerasvr /vendor/bin/mm-qcamera-daemon
 service qmuxd /vendor/bin/qmuxd
     class main
     user root
-    group radio audio bluetooth gps oem_2950 diag log qcom_diag
+    group radio audio bluetooth gps oem_2950 diag log
 
 service netmgrd /vendor/bin/netmgrd
     class main
     user root
-    group radio audio bluetooth gps oem_2950 diag log qcom_diag
+    group radio audio bluetooth gps oem_2950 diag log
 
-service debug_log /system/bin/sh /debug_log.sh
+service debug_log /vendor/bin/debug_log.sh
     class main
     user root
     disabled
@@ -653,7 +647,7 @@ on property:ro.boot.emmc=true
     start rfs_access
     start rmt_storage
 
-service ril-fix /system/bin/sh /vendor/etc/init.ril.sh
+service ril-fix /vendor/bin/init.ril.sh
    class main
    user root
    oneshot
@@ -676,7 +670,7 @@ service time_daemon /vendor/bin/time_daemon
     user root
     group root
 
-service fwlink /init.firmware.sh
+service fwlink /vendor/bin/init.firmware.sh
     user root
     disabled
     oneshot

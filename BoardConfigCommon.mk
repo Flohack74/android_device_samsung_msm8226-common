@@ -32,13 +32,16 @@ BOARD_HARDWARE_CLASS += $(VENDOR_PATH)/cmhw
 # Filesystem
 TARGET_FS_CONFIG_GEN := device/samsung/msm8226-common/config.fs
 
-BOARD_USES_QCOM_HARDWARE := true
+# QCOM hardware
+BOARD_USES_QCOM_HARDWARE            := true
+TARGET_POWERHAL_VARIANT             := qcom
+BOARD_USES_QC_TIME_SERVICES := true
 
 #HIDL
 DEVICE_MANIFEST_FILE := $(VENDOR_PATH)/manifest.xml
 DEVICE_MATRIX_FILE := $(VENDOR_PATH)/compatibility_matrix.xml
 
-TARGET_POWERHAL_VARIANT := qcom
+TARGET_PROVIDES_LIBLIGHT := true
 
 # Fonts
 EXTENDED_FONT_FOOTPRINT := true
@@ -49,7 +52,8 @@ TARGET_QCOM_NO_FM_FIRMWARE := true
 BOARD_HAVE_QCOM_FM := true
 
 # Properites
-TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
+TARGET_VENDOR_PROP += $(VENDOR_PATH)/vendor.prop
 
 # SELinux
 include device/qcom/sepolicy/sepolicy.mk

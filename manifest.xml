@@ -1,16 +1,3 @@
-<!-- 
-    This is a skeleton device manifest. Notes: 
-    1. android.hidl.*, android.frameworks.*, android.system.* are not included.
-    2. If a HAL is supported in both hwbinder and passthrough transport, 
-       only hwbinder is shown.
-    3. It is likely that HALs in passthrough transport does not have
-       <interface> declared; users will have to write them by hand.
-    4. A HAL with lower minor version can be overridden by a HAL with
-       higher minor version if they have the same name and major version.
-    5. sepolicy version is set to 0.0. It is recommended that the entry
-       is removed from the manifest file and written by assemble_vintf
-       at build time.
--->
 <manifest version="1.0" type="device">
     <hal format="hidl">
         <name>android.hardware.audio</name>
@@ -46,8 +33,12 @@
     </hal>
     <hal format="hidl">
         <name>android.hardware.camera.provider</name>
-        <transport arch="32">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>2.4</version>
+        <interface>
+            <name>ICameraProvider</name>
+            <instance>legacy/0</instance>
+        </interface>
     </hal>
     <hal format="hidl">
         <name>android.hardware.cas</name>
@@ -82,7 +73,7 @@
     </hal>
     <hal format="hidl">
         <name>android.hardware.gnss</name>
-        <transport arch="32">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IGnss</name>
@@ -104,28 +95,6 @@
         <version>2.1</version>
         <interface>
             <name>IComposer</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.media.omx</name>
-        <transport arch="32">passthrough</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IOmx</name>
-            <instance>default</instance>
-        </interface>
-        <interface>
-            <name>IOmxStore</name>
-            <instance>default</instance>
-        </interface>
-    </hal>
-    <hal format="hidl">
-        <name>android.hardware.gatekeeper</name>
-        <transport arch="32">passthrough</transport>
-        <version>1.0</version>
-        <interface>
-            <name>IGatekeeper</name>
             <instance>default</instance>
         </interface>
     </hal>
@@ -157,6 +126,19 @@
         </interface>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.media.omx</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IOmx</name>
+            <instance>default</instance>
+        </interface>
+        <interface>
+            <name>IOmxStore</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.memtrack</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -166,11 +148,33 @@
         </interface>
     </hal>
     <hal format="hidl">
+        <name>android.hardware.nfc</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>INfc</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.power</name>
+        <transport>hwbinder</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IPower</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
         <name>android.hardware.radio</name>
         <transport>hwbinder</transport>
         <version>1.1</version>
         <interface>
             <name>IRadio</name>
+            <instance>slot1</instance>
+        </interface>
+        <interface>
+            <name>ISap</name>
             <instance>slot1</instance>
         </interface>
     </hal>
@@ -184,8 +188,17 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.sensors</name>
+        <name>android.hardware.renderscript</name>
         <transport arch="32">passthrough</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IDevice</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.sensors</name>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>ISensors</name>
@@ -202,11 +215,6 @@
         </interface>
     </hal>
     <hal format="hidl">
-        <name>android.hardware.tests.libhwbinder</name>
-        <transport arch="32">passthrough</transport>
-        <version>1.0</version>
-    </hal>
-    <hal format="hidl">
         <name>android.hardware.usb</name>
         <transport>hwbinder</transport>
         <version>1.0</version>
@@ -217,7 +225,7 @@
     </hal>
     <hal format="hidl">
         <name>android.hardware.vibrator</name>
-        <transport arch="32">passthrough</transport>
+        <transport>hwbinder</transport>
         <version>1.0</version>
         <interface>
             <name>IVibrator</name>
@@ -239,6 +247,15 @@
         <version>1.0</version>
         <interface>
             <name>ISupplicant</name>
+            <instance>default</instance>
+        </interface>
+    </hal>
+    <hal format="hidl">
+        <name>android.hardware.gatekeeper</name>
+        <transport arch="32">passthrough</transport>
+        <version>1.0</version>
+        <interface>
+            <name>IGatekeeper</name>
             <instance>default</instance>
         </interface>
     </hal>

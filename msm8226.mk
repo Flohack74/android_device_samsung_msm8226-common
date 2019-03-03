@@ -70,9 +70,9 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    android.hardware.camera.provider@2.4-service \
+    camera.device@1.0-impl-legacy \
     android.hardware.camera.provider@2.4-impl-legacy \
-    camera.device@3.2-impl \
+    android.hardware.camera.provider@2.4-service \
     libboringssl-compat \
     libxml2 \
     Snap
@@ -117,10 +117,19 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     s3ve3g-vndk-extra
 
+# GPS
+PRODUCT_PACKAGES += \
+    gps.msm8226
+
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/gps/flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
-    $(LOCAL_PATH)/gps/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
-    $(LOCAL_PATH)/gps/sap.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sap.conf
+    $(LOCAL_PATH)/gps/etc/gps.conf:$(TARGET_COPY_OUT_VENDOR)/etc/gps.conf \
+    $(LOCAL_PATH)/gps/etc/flp.conf:$(TARGET_COPY_OUT_VENDOR)/etc/flp.conf \
+    $(LOCAL_PATH)/gps/etc/izat.conf:$(TARGET_COPY_OUT_VENDOR)/etc/izat.conf \
+    $(LOCAL_PATH)/gps/etc/sap.conf:$(TARGET_COPY_OUT_VENDOR)/etc/sap.conf
+
+PRODUCT_PACKAGES += \
+    android.hardware.gnss@1.0-impl \
+    android.hardware.gnss@1.0-service
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
@@ -216,9 +225,11 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	android.hardware.usb@1.0-service
 
-# Power HAL
+# Power
 PRODUCT_PACKAGES += \
-    android.hardware.power@1.0-service-qti
+    android.hardware.power@1.0-impl \
+    android.hardware.power@1.0-service \
+    power.msm8226
 
 # Radio
 PRODUCT_PACKAGES += \
