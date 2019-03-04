@@ -248,7 +248,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.light@2.0-impl \
     android.hardware.light@2.0-service \
-    lights.MSM8226
+    lights.msm8226
 
 # Wifi
 PRODUCT_PACKAGES += \

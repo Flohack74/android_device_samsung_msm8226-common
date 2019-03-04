@@ -35,6 +35,8 @@ media.stagefright.legacyencoder=true
 media.stagefright.less-secure=true
 persist.media.treble_omx=false
 
+sw.revision=4
+
 # Dalvik
 dalvik.vm.dex2oat-swap=false
 dalvik.vm.heapstartsize=8m
