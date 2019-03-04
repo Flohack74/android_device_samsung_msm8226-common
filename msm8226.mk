@@ -215,7 +215,7 @@ PRODUCT_PACKAGES += \
 
 # Vibrator
 PRODUCT_PACKAGES += \
-	android.hardware.vibrator@1.0-impl
+	android.hardware.vibrator@1.0-service.lineage
 
 # USB HAL
 PRODUCT_PACKAGES += \
@@ -234,6 +234,7 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.qcom.bt.sh \
+    debug_log.sh \
     init.ril.sh
 
 PRODUCT_PACKAGES += \
