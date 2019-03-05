@@ -606,11 +606,6 @@ service ril-daemon0 /vendor/bin/hw/rild
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
     disabled
 
-service qcamerasvr /vendor/bin/mm-qcamera-daemon
-    class late_start
-    user camera
-    group camera system inet input graphics
-
 service qmuxd /vendor/bin/qmuxd
     class main
     user root
