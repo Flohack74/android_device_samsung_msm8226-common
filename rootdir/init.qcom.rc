@@ -75,8 +75,6 @@ on fs
     # Kickstart the Wireless subsystem
     write /dev/wcnss_wlan 1
 
-    start debug_log
-
 on post-fs-data
     # Create the directories used by CnE subsystem
     mkdir /data/connectivity 0771 system system
@@ -622,11 +620,6 @@ service netmgrd /vendor/bin/netmgrd
     class main
     user root
     group radio audio bluetooth gps oem_2950 diag log
-
-service debug_log /vendor/bin/debug_log.sh
-    class main
-    user root
-    disabled
 
 service qseecomd /vendor/bin/qseecomd
     class core
