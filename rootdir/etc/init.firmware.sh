@@ -15,12 +15,14 @@ then
 	exit 1
 fi
 
-# our gpu firmware...
+# Detect on first start if we need firmware fix or not
 if [ -f "/system/etc/firmware/a300_pm4.fw" ]
 then
-	print_log 5 $LOG_TAG "Symlink have been created, skip..."
+	print_log 5 $LOG_TAG "Symlink already created, skip..."
 else
 	ln -sf /vendor/etc/firmware /system/etc/firmware
+	ln -sf /vendor/etc/*.acdb /system/etc/
+	cp -rf /vendor/audio/* /system/
 	if [ $? -ne 0 ]
 	then
 		print_log 3 $LOG_TAG "Failed to create symlink to /system/etc!"
