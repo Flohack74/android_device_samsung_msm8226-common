@@ -70,12 +70,8 @@ PRODUCT_PACKAGES += \
 
 # Camera
 PRODUCT_PACKAGES += \
-    camera.device@1.0-impl-legacy \
-    android.hardware.camera.provider@2.4-impl-legacy \
-    android.hardware.camera.provider@2.4-service \
     libboringssl-compat \
-    libxml2 \
-    Snap
+    libxml2
 
 # CRDA
 PRODUCT_PACKAGES += \
